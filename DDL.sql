@@ -52,7 +52,7 @@ CREATE TABLE reserva (
     nrDoc_comprador VARCHAR(15)
 ) ; 
 
-CREATE TABLE reserva_pasajero(
+CREATE TABLE reservaPasajero(
 
     id VARCHAR(15) , 
     estado_check BIT ,
@@ -63,7 +63,7 @@ CREATE TABLE reserva_pasajero(
     nrDoc_pasajero VARCHAR(15)
 );
 
-CREATE TABLE poliza_de_seguro (
+CREATE TABLE polizaDeSeguro (
 
     costo FLOAT ,
     nroPoliza VARCHAR(12) ,
@@ -117,7 +117,7 @@ CREATE TABLE aeropuerto (
     codigoIata VARCHAR(15) 
 );
 
-CREATE TABLE tripulante_asignado (
+CREATE TABLE tripulanteAsignado (
     tipoDoc_persona_tripulante VARCHAR (15) ,
     nrDoc_persona_tripulante VARCHAR(15) ,
     nroVuelo_vuelo VARCHAR(10) 
@@ -134,7 +134,7 @@ CREATE TABLE incluye (
     nroVuelo_vuelo VARCHAR(10) 
 )
 
-CREATE TABLE asiento_ocupa(
+CREATE TABLE asientoOcupa(
 
     id_reserva_pasajero VARCHAR(15) , 
     nroMatricula_avion VARCHAR(15) , 
