@@ -1,6 +1,5 @@
 -- TABLE Definition
 
---122
 -- Constrainer
 
 CREATE TABLE persona (
@@ -8,8 +7,8 @@ CREATE TABLE persona (
     fecha_nacimiento DATE , 
     apellido VARCHAR(25) ,
     nombre  VARCHAR(25) ,
-    tipoDoc VARCHAR (15) ,
-    nrDoc VARCHAR(15)
+    tipo_documento VARCHAR (15) ,
+    nr_documento VARCHAR(15)
 ) ;
 
 CREATE TABLE tripulante (
@@ -19,8 +18,8 @@ CREATE TABLE tripulante (
     fecha_nacimiento DATE , 
     apellido VARCHAR(25) ,
     nombre  VARCHAR(25) ,
-    tipoDoc_persona VARCHAR (15) ,
-    nrDoc_persona VARCHAR(15)
+    tipo_documento_persona VARCHAR (15) ,
+    nr_documento_persona VARCHAR(15)
 );
 
 CREATE TABLE comprador (
@@ -30,8 +29,8 @@ CREATE TABLE comprador (
     fecha_nacimiento DATE , 
     apellido VARCHAR(25) ,
     nombre  VARCHAR(25) ,
-    tipoDoc_persona VARCHAR (15) ,
-    nrDoc_persona VARCHAR(15)    
+    tipo_documento_persona VARCHAR (15) ,
+    nr_documento_persona VARCHAR(15)    
 );
 
 CREATE TABLE pasajero (
@@ -39,8 +38,8 @@ CREATE TABLE pasajero (
     fecha_nacimiento DATE , 
     apellido VARCHAR(25) ,
     nombre  VARCHAR(25) ,
-    tipoDoc_persona VARCHAR (15) ,
-    nrDoc_persona VARCHAR(15)
+    tipo_documento_persona VARCHAR (15) ,
+    nr_documento_persona VARCHAR(15)
 ) ;
 
 CREATE TABLE reserva (
@@ -48,25 +47,25 @@ CREATE TABLE reserva (
     fecha DATE ,
     costo_total FLOAT,
     codigo VARCHAR(10), 
-    tipoDoc_comprador VARCHAR (15) ,
-    nrDoc_comprador VARCHAR(15)
+    tipo_documento_comprador VARCHAR (15) ,
+    nr_documento_comprador VARCHAR(15)
 ) ; 
 
-CREATE TABLE reservaPasajero(
+CREATE TABLE reserva_pasajero(
 
     id VARCHAR(15) , 
     estado_check BIT ,
     codigo VARCHAR(10) ,
-    tipoDoc_comprador VARCHAR (15) ,
-    nrDoc_comprador VARCHAR(15),
-    tipoDoc_pasajero VARCHAR (15) ,
-    nrDoc_pasajero VARCHAR(15)
+    tipo_documento_comprador VARCHAR (15) ,
+    nr_documento_comprador VARCHAR(15),
+    tipo_documento_pasajero VARCHAR (15) ,
+    nr_documento_pasajero VARCHAR(15)
 );
 
-CREATE TABLE polizaDeSeguro (
+CREATE TABLE poliza_de_seguro (
 
     costo FLOAT ,
-    nroPoliza VARCHAR(12) ,
+    nro_poliza VARCHAR(12) ,
     monto_cobertura FLOAT , 
     fecha_inicial DATE ,
     fecha_final DATE ,
@@ -82,31 +81,31 @@ CREATE TABLE equipaje (
     costo FLOAT ,
     id_reserva_pasajero VARCHAR(15) ,
     codigo_reserva VARCHAR(10) , 
-    tipoDoc_pasajero VARCHAR (15) ,
-    nrDoc_pasajero VARCHAR(15) ,
-    tipoDoc_comprador VARCHAR (15) ,
-    nrDoc_comprador VARCHAR(15)
+    tipo_documento_pasajero VARCHAR (15) ,
+    nr_documento_pasajero VARCHAR(15) ,
+    tipo_documento_comprador VARCHAR (15) ,
+    nr_documento_comprador VARCHAR(15)
 );
 
 CREATE TABLE asiento (
 
-    nroAsiento VARCHAR(15) ,
-    nroMatricula_avion VARCHAR(15)
-);
-
-CREATE TABLE avion (
-
-    nroMatricula VARCHAR(15) ,
-    capacidad INTEGER , 
-    nroVuelo_vuelo VARCHAR(10) 
+    nro_asiento VARCHAR(15) ,
+    nro_matricula_avion VARCHAR(15)
 );
 
 CREATE TABLE vuelo (
 
     fecha_salida DATE ,
     fecha_llegada DATE ,
-    nroVuelo VARCHAR(10) ,
-    codigoIata_aeropuerto VARCHAR(15)
+    nro_vuelo VARCHAR(10) ,
+    codigo_iata_aeropuerto VARCHAR(15)
+);
+
+CREATE TABLE avion (
+
+    nro_matricula VARCHAR(15) ,
+    capacidad INTEGER , 
+    nro_vuelo_vuelo VARCHAR(10) 
 );
 
 CREATE TABLE aeropuerto (
@@ -114,34 +113,34 @@ CREATE TABLE aeropuerto (
     nombre VARCHAR(25),
     ubicacion VARCHAR(50) , 
     capacidad INTEGER ,
-    codigoIata VARCHAR(15) 
+    codigo_iata VARCHAR(15) 
 );
 
-CREATE TABLE tripulanteAsignado (
-    tipoDoc_persona_tripulante VARCHAR (15) ,
-    nrDoc_persona_tripulante VARCHAR(15) ,
-    nroVuelo_vuelo VARCHAR(10) 
+CREATE TABLE tripulante_asignado (
+    tipo_documento_persona_tripulante VARCHAR (15) ,
+    nr_documento_persona_tripulante VARCHAR(15) ,
+    nro_vuelo_vuelo VARCHAR(10) 
 );
 
 CREATE TABLE incluye (
 
-    tipoDoc_pasajero VARCHAR (15) ,
-    nrDoc_pasajero VARCHAR(15) ,
-    tipoDoc_comprador VARCHAR (15) ,
-    nrDoc_comprador VARCHAR(15) ,
+    tipo_documento_pasajero VARCHAR (15) ,
+    nr_documento_pasajero VARCHAR(15) ,
+    tipo_documento_comprador VARCHAR (15) ,
+    nr_documento_comprador VARCHAR(15) ,
     codigo_reserva VARCHAR(10) , 
     id_reserva_pasajero VARCHAR(15) , 
-    nroVuelo_vuelo VARCHAR(10) 
+    nro_vuelo_vuelo VARCHAR(10) 
 )
 
-CREATE TABLE asientoOcupa(
+CREATE TABLE asiento_ocupa(
 
     id_reserva_pasajero VARCHAR(15) , 
-    nroMatricula_avion VARCHAR(15) , 
-    nroAsiento_asiento VARCHAR(15) ,
-    tipoDoc_pasajero VARCHAR (15) ,
-    nrDoc_pasajero VARCHAR(15) ,
+    nro_matricula_avion VARCHAR(15) , 
+    nro_asiento_asiento VARCHAR(15) ,
+    tipo_documento_pasajero VARCHAR (15) ,
+    nr_documento_pasajero VARCHAR(15) ,
     codigo_reserva VARCHAR(10) , 
-    tipoDoc_comprador VARCHAR (15) ,
-    nrDoc_comprador VARCHAR(15) ,
+    tipo_documento_comprador VARCHAR (15) ,
+    nr_documento_comprador VARCHAR(15) ,
 )
