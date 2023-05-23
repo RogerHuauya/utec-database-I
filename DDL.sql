@@ -131,7 +131,7 @@ CREATE TABLE incluye (
     codigo_reserva VARCHAR(10) , 
     id_reserva_pasajero VARCHAR(15) , 
     nro_vuelo_vuelo VARCHAR(10) 
-)
+) ; 
 
 CREATE TABLE asiento_ocupa(
 
@@ -143,4 +143,4 @@ CREATE TABLE asiento_ocupa(
     codigo_reserva VARCHAR(10) , 
     tipo_documento_comprador VARCHAR (15) ,
     nr_documento_comprador VARCHAR(15) ,
-)
+) ;
