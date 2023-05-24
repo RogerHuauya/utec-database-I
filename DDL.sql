@@ -1,4 +1,4 @@
--- TABLE Definition
+b-- TABLE Definition
 
 -- Constrainer
 
@@ -55,7 +55,7 @@ CREATE TABLE reserva_pasajero(
 
     id VARCHAR(15) , 
     estado_check BIT ,
-    codigo VARCHAR(10) ,
+    codigo_reserva VARCHAR(10) ,
     tipo_documento_comprador VARCHAR (15) ,
     nro_documento_comprador VARCHAR(15),
     tipo_documento_pasajero VARCHAR (15) ,
@@ -69,7 +69,13 @@ CREATE TABLE poliza_de_seguro (
     monto_cobertura FLOAT , 
     fecha_inicial DATE ,
     fecha_final DATE ,
-    id_reserva_pasajero VARCHAR(15) 
+    codigo_reserva VARCHAR(10) ,
+    id_reserva_pasajero VARCHAR(15)  ,
+    tipo_documento_comprador VARCHAR (15) ,
+    nro_documento_comprador VARCHAR(15),
+    tipo_documento_pasajero VARCHAR (15) ,
+    nro_documento_pasajero VARCHAR(15)
+
 ) ; 
 
 CREATE TABLE equipaje (
@@ -98,7 +104,9 @@ CREATE TABLE vuelo (
     fecha_salida DATE ,
     fecha_llegada DATE ,
     nro_vuelo VARCHAR(10) ,
-    codigo_iata_aeropuerto VARCHAR(15)
+    codigo_iata_aeropuerto_origen VARCHAR(15) ,
+    codigo_iata_aeropuero_destino VARCHAR(15)
+
 );
 
 CREATE TABLE avion (
