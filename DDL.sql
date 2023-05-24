@@ -1,5 +1,5 @@
-b-- TABLE Definition
-
+-- TABLE Definition
+--2
 -- Constrainer
 
 CREATE TABLE persona (
