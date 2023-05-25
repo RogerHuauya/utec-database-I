@@ -1,9 +1,10 @@
 create schema condorito;
 set search_path = condorito;
+-- TABLE Definition
 
 CREATE TABLE persona (
 
-    fecha_nacimiento DATE , 
+    fecha_nacimiento DATE ,
     apellido VARCHAR(25) ,
     nombre  VARCHAR(25) ,
     tipo_documento VARCHAR (15) ,
@@ -12,7 +13,7 @@ CREATE TABLE persona (
 
 CREATE TABLE tripulante (
 
-    cargo VARCHAR(20) , 
+    cargo VARCHAR(20) ,
     salario FLOAT ,
     tipo_documento_persona VARCHAR (15) ,
     nro_documento_persona VARCHAR(15)
@@ -23,7 +24,7 @@ CREATE TABLE comprador (
     correo_electronico VARCHAR(40) , 
     contrasena VARCHAR(30) ,
     tipo_documento_persona VARCHAR (15) ,
-    nro_documento_persona VARCHAR(15)    
+    nro_documento_persona VARCHAR(15)
 );
 
 CREATE TABLE pasajero (
@@ -38,7 +39,7 @@ CREATE TABLE reservacion (
 
     fecha DATE ,
     costo_total FLOAT,
-    codigo VARCHAR(10), 
+    codigo VARCHAR(10),
     tipo_documento_comprador VARCHAR (15) ,
     nro_documento_comprador VARCHAR(15)
 ); 
@@ -71,7 +72,7 @@ CREATE TABLE tipo_equipaje (
 CREATE TABLE tripulante_asignado (
     tipo_documento_persona_tripulante VARCHAR (15) ,
     nro_documento_persona_tripulante VARCHAR(15) ,
-    nro_vuelo_vuelo VARCHAR(10) 
+    nro_vuelo_vuelo VARCHAR(10)
 );
 
 
