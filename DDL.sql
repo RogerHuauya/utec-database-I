@@ -85,8 +85,8 @@ CREATE TABLE vuelo (
 
 CREATE TABLE aeropuerto (
 
-    nombre VARCHAR(25),
-    ubicacion VARCHAR(50) , 
+    nombre VARCHAR(255),
+    ubicacion VARCHAR(255) , 
     capacidad INTEGER ,
     codigo_iata VARCHAR(15) 
 );
