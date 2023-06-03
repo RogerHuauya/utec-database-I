@@ -110,9 +110,6 @@ CREATE TABLE asiento_disponible (
 
     nro_asiento VARCHAR(15) ,
     nro_vuelo_vuelo VARCHAR(10) ,
-    nro_matricula_avion VARCHAR(15) ,
-    codigo_iata_aeropuerto_origen VARCHAR(15) ,
-    codigo_iata_aeropuero_destino VARCHAR(15) 
 );
 
 CREATE TABLE pertenece (
