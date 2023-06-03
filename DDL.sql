@@ -1,8 +1,5 @@
--- TABLE Definition
---2
--- Constrainer
 
-DROP TABLE aeropuerto , persona , tripulante , tripulante_asignado , comprador , pasajero ,avion , vuelo , 
+
 CREATE TABLE persona (
 
     fecha_nacimiento DATE , 
@@ -112,7 +109,7 @@ CREATE TABLE asiento_disponible (
     nro_vuelo_vuelo VARCHAR(10) ,
     nro_matricula_avion VARCHAR(15) ,
     codigo_iata_aeropuerto_origen VARCHAR(15) ,
-    codigo_iata_aeropuero_destino VARCHAR(15) ,
+    codigo_iata_aeropuero_destino VARCHAR(15) 
 );
 
 CREATE TABLE pertenece (
