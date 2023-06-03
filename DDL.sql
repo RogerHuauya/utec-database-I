@@ -25,7 +25,7 @@ CREATE TABLE comprador (
 
 CREATE TABLE pasajero (
     
-    telefono VARCHAR (20) ,
+    nro_telefono VARCHAR (20) ,
     tipo_documento_persona VARCHAR (15) ,
     nro_documento_persona VARCHAR(15)
 );
