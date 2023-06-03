@@ -99,6 +99,13 @@ CREATE TABLE aeropuerto (
     codigo_iata VARCHAR(15) 
 );
 
+CREATE TABLE avion (
+
+    nro_matricula VARCHAR(15) ,
+    capacidad INTEGER , 
+    nro_vuelo_vuelo VARCHAR(10) 
+);
+
 CREATE TABLE asiento_disponible (
 
     nro_asiento VARCHAR(15) ,
@@ -119,11 +126,5 @@ CREATE TABLE pertenece (
 );
 
 
-CREATE TABLE avion (
-
-    nro_matricula VARCHAR(15) ,
-    capacidad INTEGER , 
-    nro_vuelo_vuelo VARCHAR(10) 
-);
 
 
