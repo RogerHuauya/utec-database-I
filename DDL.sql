@@ -103,6 +103,7 @@ CREATE TABLE avion (
 
     nro_matricula VARCHAR(15) ,
     capacidad INTEGER , 
+    modelo VARCHAR(20) 
 );
 
 CREATE TABLE asiento_disponible (
