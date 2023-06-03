@@ -1,3 +1,6 @@
+create schema condorito;
+set search_path = condorito;
+
 CREATE TABLE persona (
 
     fecha_nacimiento DATE , 
@@ -101,14 +104,14 @@ CREATE TABLE avion (
 CREATE TABLE asiento_disponible (
 
     nro_asiento VARCHAR(15) ,
-    nro_vuelo_vuelo VARCHAR(10) ,
+    nro_vuelo_vuelo VARCHAR(10)
 );
 
 CREATE TABLE pertenece (
 
     sub_reservacion_id_sub_reservacion VARCHAR(15) ,
     nro_asiento_asiento_disponible VARCHAR(15) ,
-    nro_vuelo_vuelo VARCHAR(10) ,
+    nro_vuelo_vuelo VARCHAR(10)
 );
 
 
