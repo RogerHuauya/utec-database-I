@@ -50,9 +50,9 @@ CREATE TABLE sub_reservacion(
 );
 
 
-CREATE TABLE reserva_equipaje (
+CREATE TABLE sub_reserva_equipaje (
 
-    codigo_tipo_tipo_pasajero VARCHAR(15) ,
+    codigo_tipo_tipo_equipaje VARCHAR(15) ,
     cantidad INTEGER ,
     sub_reservacion_id_sub_reservacion VARCHAR(15) 
 );
