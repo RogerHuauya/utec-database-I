@@ -11,9 +11,6 @@ CREATE TABLE tripulante (
 
     cargo VARCHAR(20) , 
     salario FLOAT ,
-    fecha_nacimiento DATE , 
-    apellido VARCHAR(25) ,
-    nombre  VARCHAR(25) ,
     tipo_documento_persona VARCHAR (15) ,
     nro_documento_persona VARCHAR(15)
 );
@@ -21,19 +18,13 @@ CREATE TABLE tripulante (
 CREATE TABLE comprador (
 
     correo_electronico VARCHAR(40) , 
-    contasena VARCHAR(30) ,
-    fecha_nacimiento DATE , 
-    apellido VARCHAR(25) ,
-    nombre  VARCHAR(25) ,
+    contrasena VARCHAR(30) ,
     tipo_documento_persona VARCHAR (15) ,
     nro_documento_persona VARCHAR(15)    
 );
 
 CREATE TABLE pasajero (
 
-    fecha_nacimiento DATE , 
-    apellido VARCHAR(25) ,
-    nombre  VARCHAR(25) ,
     tipo_documento_persona VARCHAR (15) ,
     nro_documento_persona VARCHAR(15)
 );
@@ -51,7 +42,7 @@ CREATE TABLE reservacion (
 CREATE TABLE sub_reservacion(
 
     sub_reservacion_id VARCHAR(15) , 
-    estado_check BIT ,
+    estado_check BOOLEAN ,
     codigo_reservacion VARCHAR(10) ,
     tipo_documento_pasajero VARCHAR (15) ,
     nro_documento_pasajero VARCHAR(15)
@@ -117,9 +108,6 @@ CREATE TABLE pertenece (
     sub_reservacion_id_sub_reservacion VARCHAR(15) ,
     nro_asiento_asiento_disponible VARCHAR(15) ,
     nro_vuelo_vuelo VARCHAR(10) ,
-    nro_matricula_avion VARCHAR(15) ,
-    codigo_iata_aeropuerto_origen VARCHAR(15) ,
-    codigo_iata_aeropuero_destino VARCHAR(15) 
 );
 
 
