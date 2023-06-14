@@ -1,6 +1,4 @@
-create schema condorito;
-set search_path = condorito;
--- TABLE Definition
+
 
 CREATE TABLE persona
 (
@@ -8,7 +6,6 @@ CREATE TABLE persona
     fecha_nacimiento DATE,
     apellido         VARCHAR(25),
     nombre           VARCHAR(25),
-    tipo_documento   VARCHAR(15),
     nro_documento    VARCHAR(15)
 );
 
@@ -17,7 +14,6 @@ CREATE TABLE tripulante
 
     cargo                  VARCHAR(20),
     salario                FLOAT,
-    tipo_documento_persona VARCHAR(15),
     nro_documento_persona  VARCHAR(15)
 );
 
@@ -26,7 +22,6 @@ CREATE TABLE comprador
 
     correo_electronico     VARCHAR(40),
     contrasena             VARCHAR(30),
-    tipo_documento_persona VARCHAR(15),
     nro_documento_persona  VARCHAR(15)
 );
 
@@ -34,7 +29,6 @@ CREATE TABLE pasajero
 (
 
     nro_telefono           VARCHAR(20),
-    tipo_documento_persona VARCHAR(15),
     nro_documento_persona  VARCHAR(15)
 );
 
@@ -45,7 +39,6 @@ CREATE TABLE reservacion
     fecha                    DATE,
     costo_total              FLOAT,
     codigo                   VARCHAR(10),
-    tipo_documento_comprador VARCHAR(15),
     nro_documento_comprador  VARCHAR(15)
 );
 
@@ -55,7 +48,6 @@ CREATE TABLE sub_reservacion
     sub_reservacion_id      VARCHAR(15),
     estado_check            BOOLEAN,
     codigo_reservacion      VARCHAR(10),
-    tipo_documento_pasajero VARCHAR(15),
     nro_documento_pasajero  VARCHAR(15)
 );
 
@@ -79,7 +71,6 @@ CREATE TABLE sub_reserva_equipaje
 
 CREATE TABLE tripulante_asignado
 (
-    tipo_documento_persona_tripulante VARCHAR(15),
     nro_documento_persona_tripulante  VARCHAR(15),
     nro_vuelo_vuelo                   VARCHAR(10)
 );
@@ -135,34 +126,34 @@ CREATE TABLE pertenece
 --Persona
 ALTER TABLE persona
     ADD CONSTRAINT pk_persona
-        PRIMARY KEY (tipo_documento, nro_documento);
+        PRIMARY KEY (nro_documento);
 
 --tripulante
 ALTER TABLE tripulante
     ADD CONSTRAINT fk_tripulante_persona
-        FOREIGN KEY (tipo_documento_persona, nro_documento_persona) REFERENCES persona (tipo_documento, nro_documento);
+        FOREIGN KEY (nro_documento_persona) REFERENCES persona (nro_documento);
 
 ALTER TABLE tripulante
     ADD CONSTRAINT pk_tripulante
-        PRIMARY KEY (tipo_documento_persona, nro_documento_persona);
+        PRIMARY KEY (nro_documento_persona);
 
 --comprador
 Alter TABLE comprador
     ADD CONSTRAINT fk_comprador_persona
-        FOREIGN KEY (tipo_documento_persona, nro_documento_persona) REFERENCES persona (tipo_documento, nro_documento);
+        FOREIGN KEY (nro_documento_persona) REFERENCES persona  (nro_documento);
 
 ALTER TABLE comprador
     ADD CONSTRAINT pk_comprador
-        PRIMARY KEY (tipo_documento_persona, nro_documento_persona);
+        PRIMARY KEY ( nro_documento_persona);
 
 --pasajero
 Alter TABLE pasajero
     ADD CONSTRAINT fk_pasajero_persona
-        FOREIGN KEY (tipo_documento_persona, nro_documento_persona) REFERENCES persona (tipo_documento, nro_documento);
+        FOREIGN KEY (nro_documento_persona) REFERENCES persona (nro_documento);
 
 ALTER TABLE pasajero
     ADD CONSTRAINT pk_pasajero
-        PRIMARY KEY (tipo_documento_persona, nro_documento_persona);
+        PRIMARY KEY (nro_documento_persona);
 
 --reservacion
 ALTER TABLE reservacion
@@ -171,7 +162,7 @@ ALTER TABLE reservacion
 
 ALTER TABLE reservacion
     ADD CONSTRAINT fk_reservacion_comprador
-        FOREIGN KEY (tipo_documento_comprador, nro_documento_comprador) REFERENCES comprador (tipo_documento_persona, nro_documento_persona)
+        FOREIGN KEY (nro_documento_comprador) REFERENCES comprador (nro_documento_persona);
 
 --subreservacion
 
@@ -181,7 +172,7 @@ ALTER TABLE sub_reservacion
 
 ALTER TABLE sub_reservacion
     ADD CONSTRAINT fk_sub_reservacion_pasajero
-        FOREIGN KEY (tipo_documento_pasajero, nro_documento_pasajero) REFERENCES pasajero (tipo_documento_persona, nro_documento_persona);
+        FOREIGN KEY (nro_documento_pasajero) REFERENCES pasajero (nro_documento_persona);
 
 ALTER TABLE sub_reservacion
     ADD CONSTRAINT fk_sub_reservacion_reservacion
@@ -240,8 +231,8 @@ ALTER TABLE vuelo
 --tripulante_asignado
 ALTER TABLE tripulante_asignado
     ADD CONSTRAINT fk_tripulante_asignado
-        FOREIGN KEY (tipo_documento_persona_tripulante, nro_documento_persona_tripulante)
-            REFERENCES tripulante (tipo_documento_persona, nro_documento_persona);
+        FOREIGN KEY (nro_documento_persona_tripulante)
+            REFERENCES tripulante (nro_documento_persona);
 
 ALTER TABLE tripulante_asignado
     ADD CONSTRAINT fk_tripulante_asignado_vuelo
@@ -250,14 +241,14 @@ ALTER TABLE tripulante_asignado
 
 ALTER TABLE tripulante_asignado
     ADD CONSTRAINT pk_tripulante_asignado
-        PRIMARY KEY (tipo_documento_persona_tripulante, nro_documento_persona_tripulante, nro_vuelo_vuelo);
+        PRIMARY KEY (nro_documento_persona_tripulante, nro_vuelo_vuelo);
 
 
 --asiento_disponible
 ALTER TABLE asiento_disponible
-ADD CONSTRAINT fk_asiento_disponible
-FOREIGN KEY (nro_vuelo_vuelo)
-REFERENCES vuelo(nro_vuelo);
+    ADD CONSTRAINT fk_asiento_disponible
+        FOREIGN KEY (nro_vuelo_vuelo)
+            REFERENCES vuelo(nro_vuelo);
 
 ALTER TABLE asiento_disponible
     ADD CONSTRAINT pk_asiento
