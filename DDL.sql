@@ -12,7 +12,7 @@ CREATE TABLE persona
 CREATE TABLE tripulante
 (
 
-    cargo                  VARCHAR(20),
+    cargo                  VARCHAR(100),
     salario                FLOAT,
     nro_documento_persona  VARCHAR(15)
 );
