@@ -1,4 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS condorito_1m;
 
+set search_path to condorito_1m;
 
 CREATE TABLE persona
 (
