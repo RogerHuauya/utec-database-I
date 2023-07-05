@@ -83,7 +83,6 @@ END $$;
 
 
 -- Subreserva equipaje
-
 DO $$
 DECLARE
     subreservacion_rec RECORD;
