@@ -20,7 +20,8 @@ FROM (
     JOIN
         asiento_disponible ad ON ad.nro_vuelo_vuelo = v.nro_vuelo
     JOIN
-        pertenece p ON p.nro_asiento_asiento_disponible = ad.nro_asiento AND p.nro_vuelo_vuelo = ad.nro_vuelo_vuelo
+        pertenece p ON p.nro_asiento_asiento_disponible = ad.nro_asiento
+                           AND p.nro_vuelo_vuelo = ad.nro_vuelo_vuelo
     JOIN
         sub_reservacion sr ON sr.sub_reservacion_id = p.sub_reservacion_id_sub_reservacion
     JOIN
