@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SQL Query Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .table-responsive {
+            max-width: 100%;
+            overflow-x: auto;
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .home-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .home-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- Beautified button link to go back home -->
+    <a href="/" class="home-link">Go back to home</a>
+
+    <h1>SQL Query Result</h1>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <!-- Dynamic column headers -->
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic rows -->
+                {% for row in result %}
+                    <tr>
+                        <!-- Dynamic columns -->
+                        {% for column in columns %}
+                            <td>{{ row[column] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

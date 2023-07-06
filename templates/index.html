@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SQL Queries</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Prism CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-5 text-center">SQL Queries</h1>
+        <!-- Schema selection dropdown -->
+        <div class="form-group">
+            <label for="schemaSelection">Choose a schema:</label>
+            <select class="form-control" id="schemaSelection" onchange="updateQueryLinks()">
+                <option value="condorito_1k_indices">condorito_1k_indices</option>
+                <option value="condorito_10k_indices">condorito_10k_indices</option>
+                <option value="condorito_100k_indices">condorito_100k_indices</option>
+                <option value="condorito_1m_indices">condorito_1m_indices</option>
+            </select>
+        </div>
+        <div class="list-group mb-5">
+            <a id="query1_link" href="/query1/condorito_1k_indices" class="list-group-item list-group-item-action">Query 1</a>
+            <pre><code class="language-sql">{{ query1 | e }}</code></pre>
+
+            <a id="query2_link" href="/query2/condorito_1k_indices" class="list-group-item list-group-item-action">Query 2</a>
+            <pre><code class="language-sql">{{ query2 | e }}</code></pre>
+
+            <a id="query3_link" href="/query3/condorito_1k_indices" class="list-group-item list-group-item-action">Query 3</a>
+            <pre><code class="language-sql">{{ query3 | e }}</code></pre>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-sql.min.js"></script>
+
+    <!-- JavaScript function to update links when schema is changed -->
+    <script>
+        function updateQueryLinks() {
+            var schema = document.getElementById("schemaSelection").value;
+            document.getElementById("query1_link").href = "/query1/" + schema;
+            document.getElementById("query2_link").href = "/query2/" + schema;
+            document.getElementById("query3_link").href = "/query3/" + schema;
+        }
+    </script>
+</body>
+</html>

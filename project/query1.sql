@@ -1,5 +1,5 @@
 set work_mem = '256MB';
-
+set search_path = 'condorito_1m'
 SELECT p.nombre,
        p.apellido,
        r.fecha                                              AS fecha_reservacion,

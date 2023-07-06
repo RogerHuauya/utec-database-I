@@ -1,0 +1,39 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Navigation bar styles */
+.navbar {
+  margin-bottom: 1rem;
+}
+
+/* Latest posts styles */
+.card {
+  margin-bottom: 1rem;
+}
+
+.like-btn {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+}
+
+.like-count {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 1rem;
+}
