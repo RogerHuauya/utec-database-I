@@ -29,7 +29,8 @@ FROM persona p
      aeropuerto a ON v.codigo_iata_aeropuerto_origen = a.codigo_iata AND a.capacidad > 100
          JOIN
      aeropuerto a2 ON v.codigo_iata_aeropuerto_destino = a2.codigo_iata AND a2.capacidad > 100
-WHERE t.nro_documento_persona IN (select tripulante.nro_documento_persona from tripulante where tripulante.cargo= 'Azafata')
+WHERE t.nro_documento_persona IN (select tripulante.nro_documento_persona
+                                  from tripulante where tripulante.cargo= 'Azafata')
 GROUP BY p.nombre,
          p.apellido,
          r.fecha,
