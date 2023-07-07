@@ -1,6 +1,34 @@
 
+drop index vueloFechaSalidaIndex ;
+drop index vueloNroMatriculaAvionIndex ;
+drop index asientoDisponibleNroVueloVueloIndex;
+drop index perteneceAsientoIndex;
+drop index perteneceVueloIndex;
+drop index perteneceReservacionIndex ;
+drop index vueloFechaSalidaIndex ;
+drop index reservacionCostoIndex ;
+drop index subreservaEquipaje ;
+drop index subresevacionNroDocumento ;
+drop index subreservacionCodigoReservacion ;
+drop index pertencesubReservacionIndex ;
+drop index pertenceVueloiIndex ;
 
+drop index subReservacionNroDocumentoPasajeroIndex;
+drop index reservacionCodigoFechaIndex;
+drop index subreservaequipajesubreservacionidindex ;
+drop index perteneceNroVueloIndex;
+drop index perteneceSubReservacionIdIndex ;
+drop index tripulanteAsignadoNroVueloVueloIndex;
+drop index aeropuertoCapacidadIndex;
+drop index tripulanteCargoIndex;
 
+CREATE INDEX reservacionCodigoFechaIndex ON reservacion USING btree (fecha);
+CREATE INDEX aeropuertoCapacidadIndex ON aeropuerto USING btree (capacidad); --ok
+CREATE INDEX tripulanteCargoIndex ON tripulante USING hash (cargo); --ok
+CREATE INDEX subReservaEquipajeSubReservacionIdIndex ON sub_reserva_equipaje USING hash (sub_reservacion_id_sub_reservacion);
+CREATE INDEX perteneceSubReservacionIdIndex ON pertenece USING hash (sub_reservacion_id_sub_reservacion);
+CREATE INDEX perteneceNroVueloIndex ON pertenece USING hash (nro_vuelo_vuelo);
+CREATE INDEX subReservacionNroDocumentoPasajeroIndex ON sub_reservacion USING hash (nro_documento_pasajero); --ok
 
 SET enable_mergejoin to OFF;
 SET enable_hashjoin to OFF;
@@ -8,9 +36,7 @@ SET enable_bitmapscan to OFF;
 SET enable_sort to OFF;
 
 set work_mem = '256MB';
-
-
-EXPLAIN ANALYSE SELECT p.nombre,
+EXPLAIN ANALYZE SELECT p.nombre,
        p.apellido,
        r.fecha                                              AS fecha_reservacion,
        r.costo_total + COALESCE(te.costo * sre.cantidad, 0) AS costo_total,
@@ -40,7 +66,8 @@ FROM persona p
          JOIN
      aeropuerto a2 ON v.codigo_iata_aeropuerto_destino = a2.codigo_iata AND a2.capacidad > 4000
 WHERE t.nro_documento_persona IN (select tripulante.nro_documento_persona
-                                  from tripulante where tripulante.cargo= 'Azafata')
+                                  from tripulante
+                                  where tripulante.cargo = 'Azafata')
 GROUP BY p.nombre,
          p.apellido,
          r.fecha,
@@ -49,5 +76,9 @@ GROUP BY p.nombre,
          sre.cantidad,
          a.nombre,
          a2.nombre
-LIMIT  50 ;
+LIMIT 50;
 
+reset work_mem;
+
+
+--este
