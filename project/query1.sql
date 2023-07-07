@@ -1,5 +1,7 @@
 
 
+
+
 SET enable_mergejoin to OFF;
 SET enable_hashjoin to OFF;
 SET enable_bitmapscan to OFF;
