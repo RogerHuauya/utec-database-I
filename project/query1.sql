@@ -1,6 +1,14 @@
+
+
+SET enable_mergejoin to OFF;
+SET enable_hashjoin to OFF;
+SET enable_bitmapscan to OFF;
+SET enable_sort to OFF;
+
 set work_mem = '256MB';
-set search_path = 'condorito_1m'
-SELECT p.nombre,
+
+
+EXPLAIN ANALYSE SELECT p.nombre,
        p.apellido,
        r.fecha                                              AS fecha_reservacion,
        r.costo_total + COALESCE(te.costo * sre.cantidad, 0) AS costo_total,
@@ -12,7 +20,7 @@ FROM persona p
          JOIN
      sub_reservacion sr ON ps.nro_documento_persona = sr.nro_documento_pasajero
          JOIN
-     reservacion r ON sr.codigo_reservacion = r.codigo AND r.fecha BETWEEN '2019-01-01' AND '2023-12-31'
+     reservacion r ON sr.codigo_reservacion = r.codigo AND r.fecha BETWEEN '2019-01-01' AND '2024-12-31'
          LEFT JOIN
      sub_reserva_equipaje sre ON sr.sub_reservacion_id = sre.sub_reservacion_id_sub_reservacion
          LEFT JOIN
@@ -26,9 +34,9 @@ FROM persona p
          JOIN
      tripulante t ON ta.nro_documento_persona_tripulante = t.nro_documento_persona
          JOIN
-     aeropuerto a ON v.codigo_iata_aeropuerto_origen = a.codigo_iata AND a.capacidad > 100
+     aeropuerto a ON v.codigo_iata_aeropuerto_origen = a.codigo_iata AND a.capacidad > 4000
          JOIN
-     aeropuerto a2 ON v.codigo_iata_aeropuerto_destino = a2.codigo_iata AND a2.capacidad > 100
+     aeropuerto a2 ON v.codigo_iata_aeropuerto_destino = a2.codigo_iata AND a2.capacidad > 4000
 WHERE t.nro_documento_persona IN (select tripulante.nro_documento_persona
                                   from tripulante where tripulante.cargo= 'Azafata')
 GROUP BY p.nombre,
