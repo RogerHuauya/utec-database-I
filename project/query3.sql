@@ -1,6 +1,6 @@
 set work_mem  = '256MB' ;
 
-SELECT
+explain analyze SELECT
     (SELECT CONCAT(p.nombre, ' ', p.apellido)
      FROM persona p
      JOIN pasajero paj ON paj.nro_documento_persona = p.nro_documento

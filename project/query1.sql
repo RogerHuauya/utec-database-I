@@ -36,7 +36,8 @@ SET enable_bitmapscan to OFF;
 SET enable_sort to OFF;
 
 set work_mem = '256MB';
-EXPLAIN ANALYZE SELECT p.nombre,
+set search_path = 'condorito_1m'
+explain analyse SELECT p.nombre,
        p.apellido,
        r.fecha                                              AS fecha_reservacion,
        r.costo_total + COALESCE(te.costo * sre.cantidad, 0) AS costo_total,
@@ -76,7 +77,7 @@ GROUP BY p.nombre,
          sre.cantidad,
          a.nombre,
          a2.nombre
-LIMIT 50;
+LIMIT  50;
 
 reset work_mem;
 

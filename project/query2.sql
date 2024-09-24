@@ -1,4 +1,6 @@
-SELECT
+set work_mem = '256MB';
+
+explain analyse SELECT
     avion_matricula,
     passenger_count_avion,
     total_revenue,
